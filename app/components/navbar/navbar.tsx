@@ -66,6 +66,12 @@ export default function Navbar({ categories }: NavbarProps) {
                 <span className="text-sm font-medium text-gray-700">
                   Hi, {session.user.name}
                 </span>
+ <Link
+  href="/profile"
+  className="rounded-lg border border-gray-200 px-4 py-2 text-sm font-medium text-gray-700 transition hover:border-green-200 hover:bg-green-50 hover:text-green-700"
+>
+  Profile
+</Link>
 
                 <button
                   type="button"
@@ -156,6 +162,12 @@ export default function Navbar({ categories }: NavbarProps) {
                     Hi, {session.user.name}
                   </div>
 
+<Link
+  href="/profile"
+  className="rounded-lg border border-gray-200 px-4 py-2 text-sm font-medium text-gray-700 transition hover:border-green-200 hover:bg-green-50 hover:text-green-700"
+>
+  Profile
+</Link>
                   {/* Logout */}
                   <button
                     type="button"
