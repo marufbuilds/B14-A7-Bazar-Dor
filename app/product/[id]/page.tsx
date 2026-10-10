@@ -1,17 +1,38 @@
- import { notFound } from "next/navigation";
+ 
+import { notFound, redirect } from "next/navigation";
+import { headers } from "next/headers";
+
 import { getProduct } from "@/app/lib/api";
+import { auth } from "@/app/lib/auth";
 
 export const instant = false;
+
 interface ProductPageProps {
   params: Promise<{
     id: string;
   }>;
 }
- 
 
 const ProductPage = async ({ params }: ProductPageProps) => {
+  // 1. Get the dynamic product ID
   const { id } = await params;
 
+  // 2. Verify the user's Better Auth session
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
+
+  // 3. Redirect users who are not authenticated
+ if (!session) {
+  const redirectTo = `/product/${id}`;
+  const message = "Please sign in first to view product details.";
+
+  redirect(
+    `/sign-in?redirectTo=${encodeURIComponent(redirectTo)}&message=${encodeURIComponent(message)}`
+  );
+}
+
+  // 4. Fetch product data only after authentication
   let product;
 
   try {
@@ -24,6 +45,7 @@ const ProductPage = async ({ params }: ProductPageProps) => {
     notFound();
   }
 
+  // 5. Calculate price summary
   const averagePrice =
     product.markets.length > 0
       ? Math.round(
@@ -55,7 +77,6 @@ const ProductPage = async ({ params }: ProductPageProps) => {
 
             {/* Product Info */}
             <div className="flex min-w-0 items-center gap-4">
-
               <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-[#f1f6f2] sm:h-16 sm:w-16">
                 <span className="text-3xl sm:text-4xl">
                   {product.image}
@@ -103,7 +124,6 @@ const ProductPage = async ({ params }: ProductPageProps) => {
 
         {/* Price Summary */}
         <section className="mt-4 rounded-2xl border border-gray-200 bg-white p-4 sm:p-5">
-
           <h2 className="text-sm font-bold text-gray-800 sm:text-base">
             দামের সারসংক্ষেপ
           </h2>
@@ -154,13 +174,11 @@ const ProductPage = async ({ params }: ProductPageProps) => {
                 সব বাজারের গড় দাম
               </p>
             </div>
-
           </div>
         </section>
 
         {/* Market Price Table */}
         <section className="mt-4 overflow-hidden rounded-2xl border border-gray-200 bg-white">
-
           <div className="p-4 sm:p-5">
             <h2 className="text-sm font-bold text-gray-800 sm:text-base">
               বাজারভিত্তিক আজকের দাম
@@ -170,7 +188,6 @@ const ProductPage = async ({ params }: ProductPageProps) => {
           {/* Desktop Table */}
           <div className="hidden overflow-x-auto md:block">
             <table className="w-full border-collapse text-sm">
-
               <thead>
                 <tr className="border-y border-gray-200 bg-[#f8faf8] text-left text-xs text-gray-500">
                   <th className="px-5 py-3 font-medium">
@@ -233,7 +250,6 @@ const ProductPage = async ({ params }: ProductPageProps) => {
                   );
                 })}
               </tbody>
-
             </table>
           </div>
 
@@ -266,7 +282,6 @@ const ProductPage = async ({ params }: ProductPageProps) => {
                   </div>
 
                   <div className="mt-3 grid grid-cols-3 gap-2">
-
                     <div className="rounded-lg bg-gray-50 p-2">
                       <p className="text-[9px] text-gray-400">
                         সর্বনিম্ন
@@ -296,13 +311,11 @@ const ProductPage = async ({ params }: ProductPageProps) => {
                         ৳{marketAverage}
                       </p>
                     </div>
-
                   </div>
                 </div>
               );
             })}
           </div>
-
         </section>
       </div>
     </main>

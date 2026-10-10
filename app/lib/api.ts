@@ -6,7 +6,7 @@
 } from "../types/bazardor";
 
 const BASE_URL =
-  "https://api.api-store.workers.dev/api/bazardor";
+  "https://openapi.programming-hero.com/api/bazardor";
 
 // Get all categories
 export async function getCategories(): Promise<Category[]> {

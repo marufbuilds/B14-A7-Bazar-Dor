@@ -3,8 +3,11 @@
 import { useEffect, useState, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import toast from "react-hot-toast";
+// import toast from "react-hot-toast";
+import { toast } from "sonner";
 import { authClient, useSession } from "@/app/lib/auth-client";
+import { Toaster } from "react-hot-toast";
+// import { toast } from "sonner";
 
 export default function ProfilePage() {
 const router = useRouter();
