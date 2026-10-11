@@ -1,6 +1,7 @@
  
 import { notFound, redirect } from "next/navigation";
 import { headers } from "next/headers";
+// import notFound from "@/app/not-found"; 
 
 import { getProduct } from "@/app/lib/api";
 import { auth } from "@/app/lib/auth";

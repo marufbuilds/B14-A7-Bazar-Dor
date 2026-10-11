@@ -71,7 +71,7 @@ if (!session) {
           <span aria-hidden="true">/</span>
 
           <span className="font-medium text-gray-900">
-            {category.nameBn}
+            {category.name}
           </span>
         </nav>
 
@@ -91,7 +91,7 @@ if (!session) {
                 </p>
 
                 <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">
-                  {category.nameBn}
+                  {category.name}
                 </h1>
 
                 <p className="mt-2 text-sm leading-6 text-gray-500">

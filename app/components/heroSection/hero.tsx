@@ -1,4 +1,4 @@
- 
+  
 import Image from "next/image";
 import Link from "next/link";
 import logo from "@/public/assets/bazar-hero.png";
@@ -38,8 +38,9 @@ const MarketCard = () => {
 
           {/* CTA */}
           <div className="mt-6 inline-flex items-center gap-2 rounded-xl bg-green-600 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-green-600/20 transition-all duration-300 group-hover:bg-green-700 group-hover:shadow-green-600/30">
-            View All Prices
-
+            
+              View All Prices
+            
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
