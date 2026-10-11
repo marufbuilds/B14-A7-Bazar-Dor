@@ -10,7 +10,7 @@ export const AllProductList = ({ products }: AllProductListProps) => {
     <section className="px-4 py-8 sm:px-6 lg:px-8">
       <div className="mx-auto w-full max-w-[1120px]">
 
-        {/* Header */}
+       
         <div className="mb-6">
           <div className="mb-2 flex items-center gap-2">
             <span className="h-2 w-2 rounded-full bg-blue-500" />
@@ -29,7 +29,7 @@ export const AllProductList = ({ products }: AllProductListProps) => {
           </p>
         </div>
 
-        {/* Products */}
+         
         {products.length > 0 ? (
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {products.map((product) => (

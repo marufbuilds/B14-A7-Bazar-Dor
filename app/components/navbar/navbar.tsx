@@ -45,9 +45,9 @@ export default function Navbar({ categories }: NavbarProps) {
   return (
     <nav className="border-b border-gray-200 bg-white">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Top Section */}
+      
         <div className="flex min-h-20 items-center justify-between">
-          {/* Logo */}
+         
           <Link href="/" className="flex items-center gap-2">
             <Image
               src={logo}
@@ -67,7 +67,7 @@ export default function Navbar({ categories }: NavbarProps) {
             </div>
           </Link>
 
-          {/* Desktop Auth */}
+         
           <div className="hidden items-center gap-3 sm:flex">
             {isPending ? (
               <div className="h-9 w-24 animate-pulse rounded-lg bg-gray-100" />
@@ -111,7 +111,7 @@ export default function Navbar({ categories }: NavbarProps) {
             )}
           </div>
 
-          {/* Mobile Menu Button */}
+       
           <button
             type="button"
             onClick={() => setIsOpen(!isOpen)}
@@ -123,7 +123,7 @@ export default function Navbar({ categories }: NavbarProps) {
           </button>
         </div>
 
-        {/* Desktop Categories */}
+        
         <div className="hidden border-t border-gray-100 sm:block">
           <div className="flex gap-2 overflow-x-auto py-2">
             {categories.map((category: Category) => (
@@ -139,10 +139,10 @@ export default function Navbar({ categories }: NavbarProps) {
           </div>
         </div>
 
-        {/* Mobile Menu */}
+      
         {isOpen && (
           <div className="border-t border-gray-100 py-4 sm:hidden">
-            {/* Mobile Categories */}
+         
             <div className="flex flex-col gap-1">
               {categories.map((category: Category) => (
                 <Link
@@ -157,13 +157,13 @@ export default function Navbar({ categories }: NavbarProps) {
               ))}
             </div>
 
-            {/* Mobile Auth */}
+            
             <div className="mt-4 border-t border-gray-100 pt-4">
               {isPending ? (
                 <div className="h-10 animate-pulse rounded-lg bg-gray-100" />
               ) : session?.user ? (
                 <div className="space-y-2">
-                  {/* User */}
+               
                   <div className="rounded-lg bg-green-50 px-4 py-3 text-sm font-medium text-green-700">
                     Hi, {session.user.name}
                   </div>
@@ -176,7 +176,7 @@ export default function Navbar({ categories }: NavbarProps) {
                     Profile
                   </Link>
 
-                  {/* Logout */}
+                   
                   <button
                     type="button"
                     onClick={handleLogout}

@@ -17,7 +17,7 @@ const PriceIncreaseList = ({ products }: PriceIncreaseListProps) => {
   return (
     <section className="px-4 py-8 sm:px-6 lg:px-8">
       <div className="mx-auto w-full max-w-[1120px] lg:min-h-[332px]">
-        {/* Header */}
+      
         <div className="mb-5 flex items-end justify-between">
           <div>
             <div className="mb-2 flex items-center gap-2">
@@ -48,7 +48,7 @@ const PriceIncreaseList = ({ products }: PriceIncreaseListProps) => {
           </Link>
         </div>
 
-        {/* Cards */}
+    
         {topIncreases.length > 0 ? (
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {topIncreases.map((product) => (

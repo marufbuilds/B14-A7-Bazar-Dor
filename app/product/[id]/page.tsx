@@ -15,15 +15,15 @@ interface ProductPageProps {
 }
 
 const ProductPage = async ({ params }: ProductPageProps) => {
-  // 1. Get the dynamic product ID
+  
   const { id } = await params;
 
-  // 2. Verify the user's Better Auth session
+ 
   const session = await auth.api.getSession({
     headers: await headers(),
   });
 
-  // 3. Redirect users who are not authenticated
+ 
  if (!session) {
   const redirectTo = `/product/${id}`;
   const message = "Please sign in first to view product details.";
@@ -33,7 +33,7 @@ const ProductPage = async ({ params }: ProductPageProps) => {
   );
 }
 
-  // 4. Fetch product data only after authentication
+  
   let product;
 
   try {
@@ -46,7 +46,7 @@ const ProductPage = async ({ params }: ProductPageProps) => {
     notFound();
   }
 
-  // 5. Calculate price summary
+  
   const averagePrice =
     product.markets.length > 0
       ? Math.round(
@@ -72,11 +72,10 @@ const ProductPage = async ({ params }: ProductPageProps) => {
     <main className="min-h-screen bg-[#f4f8f5] px-3 py-5 sm:px-6 sm:py-8">
       <div className="mx-auto w-full max-w-[1120px]">
 
-        {/* Product Header */}
+       
         <section className="rounded-2xl border border-gray-200 bg-white p-4 shadow-sm sm:p-5">
           <div className="flex items-center justify-between gap-4">
-
-            {/* Product Info */}
+ 
             <div className="flex min-w-0 items-center gap-4">
               <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-[#f1f6f2] sm:h-16 sm:w-16">
                 <span className="text-3xl sm:text-4xl">
@@ -99,7 +98,7 @@ const ProductPage = async ({ params }: ProductPageProps) => {
               </div>
             </div>
 
-            {/* Current Price */}
+          
             <div className="shrink-0 rounded-xl bg-[#f1f6f2] px-4 py-3 text-right sm:px-6">
               <p className="text-[10px] font-medium text-gray-500 sm:text-xs">
                 বর্তমান দাম
@@ -123,7 +122,7 @@ const ProductPage = async ({ params }: ProductPageProps) => {
           </div>
         </section>
 
-        {/* Price Summary */}
+       
         <section className="mt-4 rounded-2xl border border-gray-200 bg-white p-4 sm:p-5">
           <h2 className="text-sm font-bold text-gray-800 sm:text-base">
             দামের সারসংক্ষেপ
@@ -131,7 +130,7 @@ const ProductPage = async ({ params }: ProductPageProps) => {
 
           <div className="mt-3 grid grid-cols-3 gap-3">
 
-            {/* Minimum */}
+         
             <div className="rounded-xl border border-gray-200 bg-white p-3 sm:p-4">
               <p className="text-[10px] text-gray-500 sm:text-xs">
                 সর্বনিম্ন দাম
@@ -146,7 +145,7 @@ const ProductPage = async ({ params }: ProductPageProps) => {
               </p>
             </div>
 
-            {/* Maximum */}
+         
             <div className="rounded-xl border border-gray-200 bg-white p-3 sm:p-4">
               <p className="text-[10px] text-gray-500 sm:text-xs">
                 সর্বোচ্চ দাম
@@ -161,7 +160,7 @@ const ProductPage = async ({ params }: ProductPageProps) => {
               </p>
             </div>
 
-            {/* Average */}
+            
             <div className="rounded-xl border border-gray-200 bg-white p-3 sm:p-4">
               <p className="text-[10px] text-gray-500 sm:text-xs">
                 গড় দাম
@@ -178,7 +177,7 @@ const ProductPage = async ({ params }: ProductPageProps) => {
           </div>
         </section>
 
-        {/* Market Price Table */}
+         
         <section className="mt-4 overflow-hidden rounded-2xl border border-gray-200 bg-white">
           <div className="p-4 sm:p-5">
             <h2 className="text-sm font-bold text-gray-800 sm:text-base">
@@ -186,7 +185,7 @@ const ProductPage = async ({ params }: ProductPageProps) => {
             </h2>
           </div>
 
-          {/* Desktop Table */}
+          
           <div className="hidden overflow-x-auto md:block">
             <table className="w-full border-collapse text-sm">
               <thead>
@@ -254,7 +253,7 @@ const ProductPage = async ({ params }: ProductPageProps) => {
             </table>
           </div>
 
-          {/* Mobile Market Cards */}
+          
           <div className="divide-y divide-gray-200 md:hidden">
             {product.markets.map((market) => {
               const marketAverage = Math.round(

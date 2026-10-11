@@ -12,7 +12,7 @@ async function MarketData() {
     <>
       <Navbar categories={categories} />
       <PriceTicker products={products} />
-      {/* <Footer /> */}
+      
     </>
   );
 }

@@ -13,7 +13,7 @@ const AllProductCard = ({ product }: AllProductCardProps) => {
       href={`/product/${product.id}`}
       className="group relative block overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
     >
-      {/* Top Accent */}
+      
       <div
         className={`absolute left-0 top-0 h-1 w-full ${
           isDown
@@ -22,9 +22,9 @@ const AllProductCard = ({ product }: AllProductCardProps) => {
         }`}
       />
 
-      {/* Main Content */}
+      
       <div className="relative flex items-center gap-4 p-4">
-        {/* Product Icon */}
+     
         <div
           className={`flex h-16 w-16 shrink-0 items-center justify-center rounded-xl text-3xl ${
             isDown ? "bg-red-50" : "bg-green-50"
@@ -33,7 +33,7 @@ const AllProductCard = ({ product }: AllProductCardProps) => {
           {product.image}
         </div>
 
-        {/* Product Information */}
+         
         <div className="min-w-0 flex-1">
           <p className="mb-1 text-xs font-medium text-gray-400">
             {product.category}
@@ -43,7 +43,7 @@ const AllProductCard = ({ product }: AllProductCardProps) => {
             {product.nameBn}
           </h3>
 
-          {/* Price */}
+           
           <div className="mt-2 flex items-baseline gap-1">
             <span className="text-lg font-extrabold text-gray-900">
               ৳{product.today}
@@ -55,7 +55,7 @@ const AllProductCard = ({ product }: AllProductCardProps) => {
           </div>
         </div>
 
-        {/* Price Change */}
+         
         <div
           className={`shrink-0 rounded-full px-2.5 py-1 text-xs font-bold ${
             isDown
@@ -67,7 +67,7 @@ const AllProductCard = ({ product }: AllProductCardProps) => {
         </div>
       </div>
 
-      {/* Bottom Action */}
+     
       <div className="relative flex items-center justify-between border-t border-gray-100 px-4 py-3">
         <span className="text-xs font-medium text-gray-400">
           Today&apos;s price

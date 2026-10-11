@@ -45,10 +45,10 @@ export default function PriceTicker({ products }: PriceTickerProps) {
   return (
     <div className="w-full overflow-hidden border-b border-gray-200 bg-gray-50">
       <div className="flex w-max animate-ticker py-3">
-        {/* First copy */}
+       
         <TickerItems products={products} />
 
-        {/* Second copy */}
+        
         <TickerItems products={products} />
       </div>
     </div>
