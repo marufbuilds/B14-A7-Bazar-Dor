@@ -22,7 +22,7 @@ export default function CategoryProductList({
   const [sort, setSort] = useState<SortOption>("default");
   const router = useRouter();
 
-  // Sort products by today's price
+   
   const sortedProducts = useMemo(() => {
     const result = [...products];
 
@@ -35,7 +35,7 @@ export default function CategoryProductList({
     return result;
   }, [products, sort]);
 
-  // Redirect unauthenticated users to sign-in
+   
   const handleProductClick = (
     event: MouseEvent<HTMLAnchorElement>,
     productId: number
@@ -60,7 +60,7 @@ export default function CategoryProductList({
 
   return (
     <section>
-      {/* Section Heading and Sorting */}
+   
       <div className="mb-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <h2 className="text-xl font-bold text-gray-900 sm:text-2xl">
@@ -99,7 +99,7 @@ export default function CategoryProductList({
         </div>
       </div>
 
-      {/* Product Cards */}
+     
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {sortedProducts.map((product) => {
           const isUp = product.change.dir === "up";
@@ -114,7 +114,7 @@ export default function CategoryProductList({
               }
               className="group flex h-full flex-col overflow-hidden rounded-xl border border-gray-200 bg-white transition duration-200 hover:-translate-y-1 hover:border-green-200 hover:shadow-md hover:shadow-green-900/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-600 focus-visible:ring-offset-2"
             >
-              {/* Product Icon */}
+             
               <div className="relative flex h-32 items-center justify-center overflow-hidden bg-gradient-to-br from-gray-50 to-green-50/70 p-3">
                 <div className="flex h-20 w-20 items-center justify-center rounded-full bg-white shadow-sm transition duration-300 group-hover:scale-105">
                   <span className="text-4xl">
@@ -123,7 +123,7 @@ export default function CategoryProductList({
                 </div>
               </div>
 
-              {/* Product Details */}
+           
               <div className="flex flex-1 flex-col p-3">
                 <h3 className="line-clamp-2 min-h-10 text-sm font-bold leading-5 text-gray-900 transition group-hover:text-green-800">
                   {product.nameBn}
@@ -133,7 +133,7 @@ export default function CategoryProductList({
                   Per {product.unit}
                 </p>
 
-                {/* Today's Price */}
+             
                 <div className="mt-3 border-t border-gray-100 pt-3">
                   <p className="text-[11px] font-medium text-gray-500">
                     Today&apos;s listed price
@@ -150,7 +150,7 @@ export default function CategoryProductList({
                   </div>
                 </div>
 
-                {/* Price Change */}
+               
                 <div className="mt-3 flex items-center justify-between gap-2 border-t border-gray-100 pt-3">
                   <span className="text-xs text-gray-500">
                     {isUp
@@ -170,7 +170,7 @@ export default function CategoryProductList({
                   </span>
                 </div>
 
-                {/* View Details */}
+                
                 <div className="mt-auto flex items-center justify-between border-t border-gray-100 pt-3 mt-3">
                   
                   

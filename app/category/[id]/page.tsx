@@ -56,7 +56,7 @@ if (!session) {
   return (
     <main className="min-h-screen bg-gray-50/80">
       <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
-        {/* Breadcrumb */}
+      
         <nav
           aria-label="Breadcrumb"
           className="mb-6 flex items-center gap-2 text-sm text-gray-500"
@@ -75,7 +75,7 @@ if (!session) {
           </span>
         </nav>
 
-        {/* Category Header */}
+       
         <section className="relative mb-8 overflow-hidden rounded-2xl border border-green-100 bg-white p-6 shadow-sm sm:p-8">
           <div className="absolute -right-10 -top-12 h-40 w-40 rounded-full bg-green-100/60 blur-2xl" />
 
@@ -113,7 +113,7 @@ if (!session) {
           </div>
         </section>
 
-        {/* Product Section */}
+        
         <section>
           {products.length === 0 ? (
             <>
@@ -156,7 +156,7 @@ if (!session) {
           )}
         </section>
 
-        {/* Footer Note */}
+        
          
       </div>
     </main>

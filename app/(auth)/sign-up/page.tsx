@@ -18,7 +18,7 @@ export default function SignUpPage() {
   const [socialLoading, setSocialLoading] =
     useState<SocialProvider | null>(null);
 
-  // Handle OAuth errors after returning to /sign-up.
+ 
   useEffect(() => {
     const url = new URL(window.location.href);
     const error = url.searchParams.get("error");
@@ -38,7 +38,7 @@ export default function SignUpPage() {
       messages[error] || "Social sign-in failed. Please try again."
     );
 
-    // Remove error parameters to prevent repeated notifications.
+   
     url.searchParams.delete("error");
     url.searchParams.delete("error_description");
 
@@ -49,7 +49,7 @@ export default function SignUpPage() {
     );
   }, []);
 
-  // Email and password sign-up.
+  
   const handleSubmit = async (
     e: React.FormEvent<HTMLFormElement>
   ) => {
@@ -96,7 +96,7 @@ export default function SignUpPage() {
     }
   };
 
-  // Google and GitHub OAuth sign-in.
+   
   const handleSocialSignIn = async (
     provider: SocialProvider
   ) => {
@@ -141,7 +141,7 @@ export default function SignUpPage() {
   return (
     <main className="flex min-h-[calc(100vh-80px)] items-center justify-center bg-gray-50 px-4 py-10">
       <div className="w-full max-w-md rounded-2xl border border-gray-200 bg-white p-6 shadow-sm sm:p-8">
-        {/* Header */}
+        
         <div className="mb-7 text-center">
           <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-50 text-2xl">
             🛒
@@ -156,9 +156,9 @@ export default function SignUpPage() {
           </p>
         </div>
 
-        {/* Email Sign-up Form */}
+        
         <form onSubmit={handleSubmit} className="space-y-4">
-          {/* Name */}
+         
           <div>
             <label
               htmlFor="name"
@@ -180,7 +180,7 @@ export default function SignUpPage() {
             />
           </div>
 
-          {/* Email */}
+          
           <div>
             <label
               htmlFor="email"
@@ -202,7 +202,7 @@ export default function SignUpPage() {
             />
           </div>
 
-          {/* Password */}
+        
           <div>
             <label
               htmlFor="password"
@@ -250,7 +250,7 @@ export default function SignUpPage() {
             </p>
           </div>
 
-          {/* Create Account Button */}
+           
           <button
             type="submit"
             disabled={isBusy}
@@ -259,8 +259,7 @@ export default function SignUpPage() {
             {loading ? "Creating account..." : "Create account"}
           </button>
         </form>
-
-        {/* Divider Below Form */}
+ 
         <div className="relative my-6">
           <div className="absolute inset-0 flex items-center">
             <div className="w-full border-t border-gray-200" />
@@ -273,9 +272,9 @@ export default function SignUpPage() {
           </div>
         </div>
 
-        {/* Google and GitHub Buttons Below the Form */}
+       
         <div className="space-y-3">
-          {/* Google */}
+           
           <button
             type="button"
             onClick={() => handleSocialSignIn("google")}
@@ -314,7 +313,7 @@ export default function SignUpPage() {
             )}
           </button>
 
-          {/* GitHub */}
+      
           <button
             type="button"
             onClick={() => handleSocialSignIn("github")}
@@ -340,7 +339,7 @@ export default function SignUpPage() {
           </button>
         </div>
 
-        {/* Sign-in Link */}
+ 
         <p className="mt-6 text-center text-sm text-gray-500">
           Already have an account?{" "}
           <Link
