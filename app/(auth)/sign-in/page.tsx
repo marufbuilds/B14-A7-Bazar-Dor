@@ -17,10 +17,8 @@ export default function SignInPage() {
   const [socialLoading, setSocialLoading] =
     useState<SocialProvider | null>(null);
 
-  // Display toast notifications from URL parameters.
   useEffect(() => {
     const url = new URL(window.location.href);
-
     const message = url.searchParams.get("message");
     const error = url.searchParams.get("error");
 
@@ -35,7 +33,6 @@ export default function SignInPage() {
       }
     }
 
-    // Handle OAuth errors.
     if (error) {
       const messages: Record<string, string> = {
         unable_to_link_account:
@@ -51,7 +48,6 @@ export default function SignInPage() {
       );
     }
 
-    // Remove notification parameters to prevent repeated toasts.
     url.searchParams.delete("message");
     url.searchParams.delete("error");
     url.searchParams.delete("error_description");
@@ -63,7 +59,7 @@ export default function SignInPage() {
     );
   }, []);
 
-  // Keep redirects within this website.
+  // Prevent external or unsafe redirect URLs.
   const getRedirectPath = () => {
     const redirectTo = new URLSearchParams(
       window.location.search
@@ -108,7 +104,6 @@ export default function SignInPage() {
       }
 
       toast.success("Signed in successfully!");
-
       window.location.href = redirectPath;
     } catch {
       toast.error("Something went wrong. Please try again.");
@@ -117,7 +112,7 @@ export default function SignInPage() {
     }
   };
 
-  // Google and GitHub sign-in.
+  // Google and GitHub OAuth sign-in.
   const handleSocialSignIn = async (
     provider: SocialProvider
   ) => {
@@ -163,7 +158,7 @@ export default function SignInPage() {
   return (
     <main className="flex min-h-[calc(100vh-80px)] items-center justify-center bg-gray-50 px-4 py-10">
       <div className="w-full max-w-md rounded-2xl border border-gray-200 bg-white p-6 shadow-sm sm:p-8">
-        {/* Header */}
+         
         <div className="mb-7 text-center">
           <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-green-50 text-2xl">
             🛒
@@ -178,47 +173,8 @@ export default function SignInPage() {
           </p>
         </div>
 
-        {/* Social sign-in */}
-        <div className="space-y-3">
-          <button
-            type="button"
-            onClick={() => handleSocialSignIn("google")}
-            disabled={isBusy}
-            className="flex w-full items-center justify-center rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm font-semibold text-gray-700 transition hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-60"
-          >
-            {socialLoading === "google"
-              ? "Connecting to Google..."
-              : "Continue with Google"}
-          </button>
-
-          <button
-            type="button"
-            onClick={() => handleSocialSignIn("github")}
-            disabled={isBusy}
-            className="flex w-full items-center justify-center rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm font-semibold text-gray-700 transition hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-60"
-          >
-            {socialLoading === "github"
-              ? "Connecting to GitHub..."
-              : "Continue with GitHub"}
-          </button>
-        </div>
-
-        {/* Divider */}
-        <div className="relative my-6">
-          <div className="absolute inset-0 flex items-center">
-            <div className="w-full border-t border-gray-200" />
-          </div>
-
-          <div className="relative flex justify-center">
-            <span className="bg-white px-3 text-xs text-gray-500">
-              Or sign in with email
-            </span>
-          </div>
-        </div>
-
-        {/* Email sign-in form */}
+        
         <form onSubmit={handleSubmit} className="space-y-4">
-          {/* Email */}
           <div>
             <label
               htmlFor="email"
@@ -240,7 +196,6 @@ export default function SignInPage() {
             />
           </div>
 
-          {/* Password */}
           <div>
             <div className="mb-1.5 flex items-center justify-between">
               <label
@@ -292,7 +247,6 @@ export default function SignInPage() {
             </div>
           </div>
 
-          {/* Submit button */}
           <button
             type="submit"
             disabled={isBusy}
@@ -302,7 +256,87 @@ export default function SignInPage() {
           </button>
         </form>
 
-        {/* Sign-up link */}
+        
+        <div className="relative my-6">
+          <div className="absolute inset-0 flex items-center">
+            <div className="w-full border-t border-gray-200" />
+          </div>
+
+          <div className="relative flex justify-center">
+            <span className="bg-white px-3 text-xs text-gray-500">
+              Or sign in with
+            </span>
+          </div>
+        </div>
+
+        
+        <div className="space-y-3">
+          
+          <button
+            type="button"
+            onClick={() => handleSocialSignIn("google")}
+            disabled={isBusy}
+            className="flex w-full items-center justify-center gap-3 rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm font-semibold text-gray-700 transition hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-60"
+          >
+            {socialLoading === "google" ? (
+              "Connecting to Google..."
+            ) : (
+              <>
+                <svg
+                  viewBox="0 0 48 48"
+                  className="h-5 w-5 shrink-0"
+                  aria-hidden="true"
+                >
+                  <path
+                    fill="#4285F4"
+                    d="M43.6 24.5c0-1.4-.1-2.8-.4-4.1H24v7.8h11a9.4 9.4 0 0 1-4.1 6.2v5.1h6.6c3.9-3.6 6.1-8.9 6.1-15Z"
+                  />
+                  <path
+                    fill="#34A853"
+                    d="M24 44c5.5 0 10.1-1.8 13.5-4.8l-6.6-5.1c-1.8 1.2-4.1 1.9-6.9 1.9-5.3 0-9.8-3.6-11.4-8.4H5.8v5.3A20 20 0 0 0 24 44Z"
+                  />
+                  <path
+                    fill="#FBBC05"
+                    d="M12.6 27.6a12 12 0 0 1 0-7.2v-5.3H5.8a20 20 0 0 0 0 17.8l6.8-5.3Z"
+                  />
+                  <path
+                    fill="#EA4335"
+                    d="M24 12c3 0 5.7 1 7.8 3.1l5.8-5.8C34.1 6 29.5 4 24 4A20 20 0 0 0 5.8 15.1l6.8 5.3C14.2 15.6 18.7 12 24 12Z"
+                  />
+                </svg>
+
+                Continue with Google
+              </>
+            )}
+          </button>
+
+           
+          <button
+            type="button"
+            onClick={() => handleSocialSignIn("github")}
+            disabled={isBusy}
+            className="flex w-full items-center justify-center gap-3 rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm font-semibold text-gray-700 transition hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-60"
+          >
+            {socialLoading === "github" ? (
+              "Connecting to GitHub..."
+            ) : (
+              <>
+                <svg
+                  viewBox="0 0 24 24"
+                  className="h-5 w-5 shrink-0"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path d="M12 .9a11.1 11.1 0 0 0-3.51 21.63c.56.1.76-.24.76-.54v-2.1c-3.1.67-3.76-1.32-3.76-1.32-.5-1.29-1.24-1.63-1.24-1.63-1.01-.69.08-.68.08-.68 1.12.08 1.71 1.15 1.71 1.15 1 1.71 2.62 1.22 3.26.93.1-.72.39-1.22.71-1.5-2.48-.28-5.09-1.24-5.09-5.51 0-1.22.44-2.21 1.15-2.99-.12-.28-.5-1.42.11-2.96 0 0 .94-.3 3.05 1.14a10.6 10.6 0 0 1 5.55 0c2.11-1.44 3.05-1.14 3.05-1.14.61 1.54.23 2.68.11 2.96.72.78 1.15 1.77 1.15 2.99 0 4.28-2.61 5.22-5.1 5.5.4.35.76 1.03.76 2.08v3.08c0 .3.2.65.77.54A11.1 11.1 0 0 0 12 .9Z" />
+                </svg>
+
+                Continue with GitHub
+              </>
+            )}
+          </button>
+        </div>
+
+        
         <p className="mt-6 text-center text-sm text-gray-500">
           Don&apos;t have an account?{" "}
           <Link
@@ -316,3 +350,4 @@ export default function SignInPage() {
     </main>
   );
 }
+
